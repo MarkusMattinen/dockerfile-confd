@@ -1,5 +1,6 @@
 # confd and supervisord on trusty
 FROM markusma/supervisord:trusty
+MAINTAINER Markus Mattinen <docker@gamma.fi>
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends golang git \
