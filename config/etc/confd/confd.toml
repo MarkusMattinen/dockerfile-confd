@@ -1,6 +1,3 @@
 [confd]
 confdir = "/etc/confd"
 interval = 10
-client_cert = "/usr/local/etc/ssl/private/etcd-client/etcd-client.host.crt"
-client_key = "/usr/local/etc/ssl/private/etcd-client/etcd-client.host.key"
-client_ca_keys = "/usr/local/etc/ssl/private/etcd-client/ca.crt"
