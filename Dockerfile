@@ -1,5 +1,5 @@
-# nginx, confd and supervisord on trusty
-FROM markusma/nginx:trusty
+# confd and supervisord on trusty
+FROM markusma/supervisord:trusty
 MAINTAINER Markus Mattinen <docker@gamma.fi>
 
 RUN apt-get update \
