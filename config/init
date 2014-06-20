@@ -1,6 +1,6 @@
 #!/bin/sh
 
-until confd -onetime -node http://$(ip route show dev eth0 | grep default | awk '{print $3}'):4001 -config-file /etc/confd/confd.toml; do
+until confd -onetime -node http://$ETCD_PORT_4001_TCP_ADDR:$ETCD_PORT_4001_TCP_PORT -config-file /etc/confd/confd.toml; do
   echo "[confd] waiting for confd to refresh config files"
   sleep 5
 done
