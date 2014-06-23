@@ -1,8 +1,3 @@
 #!/bin/sh
 
-until confd -onetime -backend env -config-file /etc/confd/confd.toml; do
-  echo "[confd] waiting for confd to refresh config files"
-  sleep 5
-done
-
-exec /usr/bin/supervisord
+confd -onetime -backend env -config-file /etc/confd/confd.toml && exec /usr/bin/supervisord

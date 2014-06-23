@@ -1,3 +1,2 @@
 [confd]
 confdir = "/etc/confd"
-interval = 10

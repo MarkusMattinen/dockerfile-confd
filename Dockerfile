@@ -18,7 +18,6 @@ RUN cd /tmp \
  && rm -r /tmp/confd
 
 ADD config/etc/confd /etc/confd
-ADD config/etc/supervisor/conf.d /etc/supervisor/conf.d
 ADD config/init /init
 
 CMD ["/init"]
