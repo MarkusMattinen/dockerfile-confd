@@ -4,10 +4,7 @@ MAINTAINER Markus Mattinen <docker@gamma.fi>
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends golang git \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN cd /tmp \
+ && cd /tmp \
  && git clone https://github.com/MarkusMattinen/confd \
  && cd confd \
  && mkdir -p gopath/src/github.com/kelseyhightower/ \
@@ -15,7 +12,12 @@ RUN cd /tmp \
  && GOPATH=$PWD/gopath:$PWD/Godeps/_workspace go build github.com/kelseyhightower/confd \
  && mv confd /usr/local/bin/confd \
  && chmod +x /usr/local/bin/confd \
- && rm -r /tmp/confd
+ && cd / \
+ && rm -r /tmp/confd \
+ && apt-get purge -y golang git \
+ && apt-get autoremove -y \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD config/etc/confd /etc/confd
 ADD config/init /init
