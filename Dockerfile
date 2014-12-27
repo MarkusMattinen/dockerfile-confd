@@ -5,7 +5,7 @@ MAINTAINER Markus Mattinen <docker@gamma.fi>
 RUN apt-get update \
  && apt-get install -y --no-install-recommends golang git \
  && cd /tmp \
- && git clone https://github.com/MarkusMattinen/confd \
+ && git clone https://github.com/kelseyhightower/confd \
  && cd confd \
  && mkdir -p gopath/src/github.com/kelseyhightower/ \
  && ln -s ../../../.. gopath/src/github.com/kelseyhightower/confd \
