@@ -1,14 +1,15 @@
-# confd and supervisord on trusty
-FROM markusma/supervisord:trusty
-MAINTAINER Markus Mattinen <docker@gamma.fi>
+# confd and supervisord on Ubuntu Trusty
+FROM markusma/supervisord:ubuntu-trusty
+MAINTAINER Markus Mattinen <markus@gamma.fi>
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends golang git \
  && cd /tmp \
- && git clone https://github.com/kelseyhightower/confd -b v0.10.0 \
+ && git clone https://github.com/kelseyhightower/confd -b v0.8.0 \
  && cd confd \
- && cd src/github.com/kelseyhightower/confd \
- && GOPATH=/tmp/confd:/tmp/confd/vendor: go build . \
+ && mkdir -p gopath/src/github.com/kelseyhightower/ \
+ && ln -s ../../../.. gopath/src/github.com/kelseyhightower/confd \
+ && GOPATH=$PWD/gopath:$PWD/Godeps/_workspace go build github.com/kelseyhightower/confd \
  && mv confd /usr/local/bin/confd \
  && chmod +x /usr/local/bin/confd \
  && cd / \
