@@ -1,3 +1,0 @@
-#!/bin/sh
-
-confd -onetime -backend env -config-file /etc/confd/confd.toml && exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
