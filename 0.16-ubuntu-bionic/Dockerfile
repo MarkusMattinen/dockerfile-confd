@@ -13,7 +13,7 @@ RUN apt-get update \
  && rm -r $GOPATH \
  && apt-get purge -y --autoremove -o APT::AutoRemove::RecommendsImportant=false golang make \
  && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* $HOME/.cache
 
 ADD config/etc/confd /etc/confd
 ADD config/init /init
